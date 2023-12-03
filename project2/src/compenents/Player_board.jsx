@@ -26,16 +26,14 @@ const Player_board = (props) => {
         props.currentPlayer[1](props.next_player.name);
     }
     function end_game_options(option){
-        if(option==='New Game'){
-            setPlayerState((prevPlayer) => 
+        setPlayerState((prevPlayer) => 
             ({ ...prevPlayer,random_num:props.player.generate_random(props.MAX_NUM), steps: 0, games_count:prevPlayer.games_count+1,scores:[...prevPlayer.scores,prevPlayer.steps]}));
             props.update_player(playerState,props.index);
-        }
-        else{
+        if(option!='New Game'){
             props.delete_player(props.index);
             setPlayerState(new Player("out"));
-            //local storage update score
         }
+     
     }
 
     const curr_player_style={
