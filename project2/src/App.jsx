@@ -3,6 +3,7 @@ import './App.css'
 import Player from'./Player'
 import Player_board from'./compenents/Player_board'
 import Open_page from './compenents/Open_page';
+import Best_players from './compenents/Best_players';
 
 function App() {
   const MAX_NUM = 10;
@@ -68,8 +69,11 @@ function App() {
       case 1:
           return (<Open_page add_curr_player={add_curr_player} start_game={start_game} MAX_NUM={MAX_NUM}/>) 
       case 2:
-        return (current_players[0]?current_players[0].map((player, key)=>(<Player_board key={key} player={player} next_player={next_player}
-          MAX_NUM={MAX_NUM} currentPlayer={currentPlayer} update_player={update_player} delete_player={delete_player} final_player_update={final_player_update}/>)):<></>)
+        return (<>{current_players[0]?current_players[0].map((player, key)=>(<><Player_board key={key} player={player} next_player={next_player}
+          MAX_NUM={MAX_NUM} currentPlayer={currentPlayer} update_player={update_player} delete_player={delete_player} final_player_update={final_player_update}/></>))
+          :<></>}
+          <Best_players/>
+          </>)
  }
 } 
 
