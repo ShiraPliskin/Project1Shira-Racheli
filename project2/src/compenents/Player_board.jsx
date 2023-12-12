@@ -37,7 +37,7 @@ const Player_board = (props) => {
         else{
             setPlayerState((prevPlayer) => ({ ...prevPlayer, is_active: false }));
             props.next_player(); 
-            props.delete_player(playerState.name,playerState.steps);
+            props.delete_player(playerState.name);
         }
     }
 
