@@ -77,21 +77,21 @@ function generate_avg(player){
   function next_player(){
     let temp_arr=current_players[0];
     let index = temp_arr.indexOf(temp_arr.find((element) => element.name=== currentPlayer[0]));
-    let to=index+1;
+    let target=index+1;
     console.log("player_name: "+currentPlayer[0]);
     console.log("index: "+index);
     if(index===current_players[0].length-1)
-      to=0;
-    while(!check_if_active(to)){
-      if(to===current_players[0].length-1){
-        to=0;
+      target=0;
+    while(!check_if_active(target)){
+      if(target===current_players[0].length-1){
+        target=0;
       }
       else{
-        to++; 
+        target++; 
       }
       
     }
-      currentPlayer[1](current_players[0][to].name);
+      currentPlayer[1](current_players[0][target].name);
     }
 
   function find_best_players(){
@@ -105,7 +105,7 @@ function generate_avg(player){
         }   
     }
     tops.sort((a, b) => a.avg - b.avg);
-    tops.slice(0,tops.length>3?3:tops.length);
+    tops=tops.slice(0,tops.length>3?3:tops.length);
     console.log(tops);
     setBestPlayers(tops);
 }
@@ -114,8 +114,8 @@ function generate_avg(player){
       case 1:
           return (<Open_page add_curr_player={add_curr_player} start_game={start_game} MAX_NUM={MAX_NUM} generate_random={generate_random}/>) 
       case 2:
-        return (<>{current_players[0]?<>{current_players[0].map((player, key)=>(<><Player_board key={key} player={player} next_player={next_player}
-          MAX_NUM={MAX_NUM} currentPlayer={currentPlayer} update_player={update_player} delete_player={delete_player} final_player_update={final_player_update} generate_random={generate_random}/></>))}
+        return (<>{current_players[0]?<>{current_players[0].map((player, key)=>(<Player_board key={key} player={player} next_player={next_player}
+          MAX_NUM={MAX_NUM} currentPlayer={currentPlayer} update_player={update_player} delete_player={delete_player} final_player_update={final_player_update} generate_random={generate_random}/>))}
           </>:<></>}
           {<Best_players bestPlayers={bestPlayers}/>}
           
