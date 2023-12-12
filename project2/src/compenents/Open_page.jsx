@@ -15,7 +15,7 @@ const Open_page=(props)=>{
     
     const add_new_user=(id, name)=>{
         localStorage.setItem("runId", runId);
-        const user = new Player(id, name,props.MAX_NUM);
+        const user = new Player(id, name, props.MAX_NUM);
         localStorage.setItem(id, JSON.stringify(user));
         props.add_curr_player(user);
         name_to_send=name;

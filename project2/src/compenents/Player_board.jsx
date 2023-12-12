@@ -27,22 +27,18 @@ const Player_board = (props) => {
         props.update_player(playerState);
         props.next_player();
     }
-    function generate_random(){
-        return Math.floor(Math.random() * props.MAX_NUM);
-    }
+   
     function end_game_options(option){
-        
         props.final_player_update(playerState.name,playerState.steps);
         if(option ==='New Game'){
             setPlayerState((prevPlayer) => 
-            ({ ...prevPlayer,random_num:generate_random(), steps: 0, games_count:prevPlayer.games_count+1, scores:[...prevPlayer.scores,prevPlayer.steps]}));
+            ({ ...prevPlayer, random_num:props.generate_random(), steps: 0, games_count:prevPlayer.games_count+1, scores:[...prevPlayer.scores,prevPlayer.steps]}));
         }
         else{
             setPlayerState((prevPlayer) => ({ ...prevPlayer, is_active: false }));
             props.next_player(); 
             props.delete_player(playerState.name,playerState.steps);
         }
-        props.find_best_players();
     }
 
     const curr_player_style={

@@ -1,24 +1,23 @@
 class Player{
-    constructor(id=0,name="",MAX_NUM=100){
-        this.id=id;
-        this.name=name;
-        this.random_num=this.generate_random(MAX_NUM);
-        this.steps=0;
-        this.games_count=0;
-        this.scores=[];
-        this.is_active=true;
-        this.avg=this.generate_avg();
+   constructor (id=0,name="") {
+    this.id=id;
+    this.name=name;
+    this.random_num;
+    this.steps=0;
+    this.games_count=0;
+    this.scores=[];
+    this.is_active=true;
+    this.avg=function(){
+        if(this.scores.length>0){
+            let sum = this.scores.reduce(myFunc);
+            function myFunc(total, num) {
+            return total + num;
+            }
+            return sum/this.games_count;
+        }
+      return 0;
     }
-    generate_avg(){
-        let sum=0;
-        this.scores.foreach=(score)=>{
-            sum+=score;
-        } 
-        return this.games_count?sum/this.games_count:0;
-    }
-    generate_random(MAX_NUM){
-        return Math.floor(Math.random() * MAX_NUM)
-    }
+    this.avg();
 }
-
+}
 export default Player;
