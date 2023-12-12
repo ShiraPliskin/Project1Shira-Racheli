@@ -27,7 +27,7 @@ const Player_board = (props) => {
     }
 
     function end_game_options(option) {
-        props.Update_player_after_game(playerState.name, playerState.steps);
+        props.Update_player_after_game(playerState.id, playerState.steps);
         if (option === 'New Game') {
             setPlayerState((prevPlayer) =>
                 ({ ...prevPlayer, random_num: props.generate_random(), steps: 0, games_count: prevPlayer.games_count + 1, scores: [...prevPlayer.scores, prevPlayer.steps] }));
@@ -35,7 +35,7 @@ const Player_board = (props) => {
         else {
             setPlayerState((prevPlayer) => ({ ...prevPlayer, is_active: false }));
             props.next_player();
-            props.delete_player(playerState.name);
+            props.delete_player(playerState.id);
         }
     }
 
