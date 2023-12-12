@@ -7,17 +7,7 @@ class Player{
     this.games_count=0;
     this.scores=[];
     this.is_active=true;
-    this.avg=function(){
-        if(this.scores.length>0){
-            let sum = this.scores.reduce(myFunc);
-            function myFunc(total, num) {
-            return total + num;
-            }
-            return sum/this.games_count;
-        }
-      return 0;
-    }
-    this.avg();
-}
+    this.avg;
+  }
 }
 export default Player;

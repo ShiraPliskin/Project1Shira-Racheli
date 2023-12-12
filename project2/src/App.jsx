@@ -21,7 +21,8 @@ function App() {
     set_board();
   }
   function add_curr_player(player){
-    player.random_num = generate_random()
+    player.avg = generate_avg(player);
+    player.random_num = generate_random();
     current_players[0]!=null?
     current_players[1](current => [...current, player]):
     current_players[1]([player]);
@@ -35,15 +36,20 @@ function App() {
       });
       current_players[1](temp_arr);
   }
+
   function generate_random(){
     return Math.floor(Math.random() * MAX_NUM);
 }
+
 function generate_avg(player){
-  let sum = player.scores.reduce(myFunc);
-  function myFunc(total, num) {
-  return total + num;
+  if(player.scores.length>0){
+    let sum = player.scores.reduce(myFunc);
+    function myFunc(total, num) {
+    return total + num;
+    }
+    return sum/player.games_count;
   }
-  return sum/player.games_count;
+  return 0
 }
 
   function final_player_update(name,steps){
@@ -53,7 +59,6 @@ function generate_avg(player){
     temp_player.scores=[...temp_player.scores,steps];
     temp_player.games_count+=1;
     temp_player.avg = generate_avg(temp_player);
-    console.log("avg: "+generate_avg(temp_player));
     temp_player.steps=0;
     localStorage.setItem(current_players[0][index].id,JSON.stringify(temp_player));
     find_best_players();
