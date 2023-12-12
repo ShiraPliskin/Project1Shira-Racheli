@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Player from'../Player'
+import Best_players from './Best_players';
 
 const Player_board = (props) => {
     const [playerState, setPlayerState] = useState(props.player);
@@ -30,6 +31,7 @@ const Player_board = (props) => {
         return Math.floor(Math.random() * props.MAX_NUM);
     }
     function end_game_options(option){
+        
         props.final_player_update(playerState.name,playerState.steps);
         if(option ==='New Game'){
             setPlayerState((prevPlayer) => 
@@ -40,6 +42,7 @@ const Player_board = (props) => {
             props.next_player(); 
             props.delete_player(playerState.name,playerState.steps);
         }
+        props.find_best_players();
     }
 
     const curr_player_style={
@@ -62,5 +65,6 @@ const Player_board = (props) => {
             </>
             </div>)
     }
+   
 }
 export default Player_board;
