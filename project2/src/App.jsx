@@ -86,7 +86,10 @@ function generate_avg(player){
       if(to===current_players[0].length-1){
         to=0;
       }
-      to++;   
+      else{
+        to++; 
+      }
+      
     }
       currentPlayer[1](current_players[0][to].name);
     }
