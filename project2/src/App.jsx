@@ -64,29 +64,31 @@ function generate_avg(player){
     find_best_players();
     update_player(temp_player);
   }
-
   function delete_player(name){
     let temp_arr=current_players[0];
-    temp_arr=temp_arr.filter(player => {
-      if(player.name != name){
-        return player;
-      };
-    }),
-    current_players[1](temp_arr);
-    
+    let index = temp_arr.indexOf(temp_arr.find((element) => element.name=== name));
+    let temp_player=current_players[0][index];
+    temp_player.is_active=false;
+    update_player(temp_player);
   }
-
+  function check_if_active(to){
+    return current_players[0][to].is_active;
+  }
   function next_player(){
     let temp_arr=current_players[0];
     let index = temp_arr.indexOf(temp_arr.find((element) => element.name=== currentPlayer[0]));
+    let to=index+1;
     console.log("player_name: "+currentPlayer[0]);
     console.log("index: "+index);
-      if(index===current_players[0].length-1){
-        currentPlayer[1](current_players[0][0].name);
+    if(index===current_players[0].length-1)
+      to=0;
+    while(!check_if_active(to)){
+      if(to===current_players[0].length-1){
+        to=0;
       }
-      else{
-        currentPlayer[1](current_players[0][index+1].name);
-      }  
+      to++;   
+    }
+      currentPlayer[1](current_players[0][to].name);
     }
 
   function find_best_players(){
