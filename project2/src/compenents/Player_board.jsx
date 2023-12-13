@@ -9,7 +9,7 @@ const Player_board = (props) => {
     function operate_action(action) {
         switch (action) {
             case '+1':
-                setPlayerState((prevPlayer) => ({ ...prevPlayer, random_num: prevPlayer.random_num + 1 }));
+                setPlayerState((prevPlayer) => ({ ...prevPlayer, random_num:prevPlayer.random_num + 1 }));
                 break;
             case '-1':
                 setPlayerState((prevPlayer) => ({ ...prevPlayer, random_num: prevPlayer.random_num - 1 }));
@@ -18,7 +18,7 @@ const Player_board = (props) => {
                 setPlayerState((prevPlayer) => ({ ...prevPlayer, random_num: prevPlayer.random_num * 2 }));
                 break;
             case '/2':
-                setPlayerState((prevPlayer) => ({ ...prevPlayer, random_num: prevPlayer.random_num / 2 }));
+                setPlayerState((prevPlayer) => ({ ...prevPlayer, random_num:  Math.round(prevPlayer.random_num / 2)-1 }));
                 break;
         }
         setPlayerState((prevPlayer) => ({ ...prevPlayer, steps: prevPlayer.steps + 1 }));
