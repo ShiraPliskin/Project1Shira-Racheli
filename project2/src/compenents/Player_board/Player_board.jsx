@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import './Player_board.css'
 const Player_board = (props) => {
     const [playerState, setPlayerState] = useState(props.player);
 
@@ -40,22 +40,22 @@ const Player_board = (props) => {
     }
 
     const curr_player_style = {
-        backgroundColor: "lightblue",
+        backgroundColor: "yellow",
     }
 
     const other_players_style = {
-        backgroundColor: "red",
+        backgroundColor: "blue",
     }
 
     let is_current_user = props.current_player[0] == props.player.id;
     if (playerState.is_active) {
-        return (<div style={is_current_user ? curr_player_style : other_players_style}> <>
+        return (<div style={is_current_user ? curr_player_style : other_players_style} className='player_area'> <>
             {playerState.random_num != props.MAX_NUM ? actions.map((action, key) => <React.Fragment key={key}><button disabled={!is_current_user} onClick={() => operate_action(action)}>{action}</button></React.Fragment>) :
                 end_game.map((option, key) => <React.Fragment key={key}><button disabled={!is_current_user} onClick={() => end_game_options(option)}>{option}</button></React.Fragment>)}
-            <p>Gamer:{playerState.name}</p>
-            <p>Number:{playerState.random_num}</p>
-            <p>Steps:{playerState.steps}</p>
-            <p>Scores:{playerState.scores.map((score, key) => (<span key={key}>{score} ,</span>))}</p>
+            <p className='game_txt'>Gamer:{playerState.name}</p>
+            <p className='game_txt'>Number:{playerState.random_num}</p>
+            <p className='game_txt'>Steps:{playerState.steps}</p>
+            <p className='game_txt'>Scores:{playerState.scores.map((score, key) => (<span key={key}>{score} ,</span>))}</p>
         </>
         </div>)
     }

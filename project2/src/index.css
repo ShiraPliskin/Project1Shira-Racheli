@@ -28,6 +28,11 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image:url("./option1.jpg");
+  background-repeat:no-repeat, repeat;
+  background-size: cover;
+  opacity: 70%;
+
 }
 
 h1 {

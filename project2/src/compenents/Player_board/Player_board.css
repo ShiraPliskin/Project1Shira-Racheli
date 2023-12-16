@@ -1,0 +1,12 @@
+.game_txt{
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(15, 15, 123);
+    font-weight: 700;
+}
+
+.player_area{
+    width: 500px;
+    height: 400px;
+}
+

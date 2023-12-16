@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useRef } from 'react'
-import Player from '../Player';
+import Player from '../../Player';
+import './Game_registration.css'
 
 const Game_registration = (props) => {
     const [form, setForm] = useState(null);
@@ -11,14 +12,14 @@ const Game_registration = (props) => {
     const inputRef2 = useRef(null);
 
     const to_the_game_btn = () => {
-        return (<button onClick={() => { props.start_game(starting_player) }}>to the game</button>)
+        return (<button onClick={() => { props.start_game(starting_player) }} className='register_btn1'>to the game</button>)
     }
 
     const add_new_user = (id, name) => {
         localStorage.setItem("runId", runId);
         const user = new Player(id, name, props.MAX_NUM);
-        localStorage.setItem(id, JSON.stringify(user));
         props.add_curr_player(user);
+        localStorage.setItem(id, JSON.stringify(user));
         starting_player = id;
         return to_the_game_btn();
     }
@@ -38,26 +39,26 @@ const Game_registration = (props) => {
 
     const old_user = () => {
         return (<>
-            <label htmlFor="id">your code:</label>
-            <input type="number" id="id" ref={inputRef1} />
-            <button onClick={() => setForm(add_old_user(inputRef1.current.value))}>next</button>
+            <label htmlFor="id" className='register_txt'>your code:</label><br/>
+            <input className="register_input" type="number" id="id" ref={inputRef1} /><br/>
+            <button onClick={() => setForm(add_old_user(inputRef1.current.value))} className='register_btn2'>next</button>
         </>)
     }
 
     const new_user = () => {
         setRunId(prevRunId => prevRunId + 1);
         return (<>
-            <label htmlFor="name">your name:</label>
-            <input type="text" id="name" ref={inputRef2} />
-            <p>your code is: {runId}</p>
-            <button onClick={() => setForm(add_new_user(runId, inputRef2.current.value))}>next</button>
+            <label htmlFor="name" className='register_txt'>your name:</label><br/>
+            <input className="register_input" type="text" id="name" ref={inputRef2} />
+            <p className='register_txt'>your code is: {runId}</p>
+            <button onClick={() => setForm(add_new_user(runId, inputRef2.current.value))} className='register_btn2'>next</button>
         </>)
     }
 
     return (
         <>
-            <button onClick={() => setForm(old_user())}>old user?</button>
-            <button onClick={() => setForm(new_user())}>new user?</button>
+            <button onClick={() => setForm(old_user())} className='register_btn1'>old user?</button>
+            <button onClick={() => setForm(new_user())} className='register_btn1'>new user?</button>
             <br />
             {form}
         </>)

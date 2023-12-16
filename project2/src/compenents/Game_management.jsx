@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Player_board from './Player_board'
+import Player_board from './Player_board/Player_board'
 
 function Game_management(props) {
 
