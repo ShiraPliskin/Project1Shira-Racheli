@@ -47,7 +47,10 @@ function Game_management(props) {
       if (next === props.current_players[0].length - 1) {
         next = 0;
       }
-      next++;
+      else{
+        next++;
+      }
+  
     }
     props.current_player[1](props.current_players[0][next].id);
   }
