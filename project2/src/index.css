@@ -29,6 +29,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-image:url("./option1.jpg");
+  opacity: 0;
   background-repeat:no-repeat, repeat;
   background-size: cover;
   opacity: 70%;
