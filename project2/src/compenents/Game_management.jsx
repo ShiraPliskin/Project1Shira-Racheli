@@ -52,10 +52,10 @@ function Game_management(props) {
     props.current_player[1](props.current_players[0][next].id);
   }
 
-  return (<>{props.current_players[0].map((player, key) => (<Player_board key={key} player={player} next_player={next_player}
+  return (<div>{props.current_players[0].map((player, key) => (<Player_board key={key} player={player} next_player={next_player}
     MAX_NUM={props.MAX_NUM} current_player={props.current_player} update_player={update_player} delete_player={delete_player}
     Update_player_after_game={Update_player_after_game} generate_random={props.generate_random} />))}
-  </>)
+  </div>)
 }
 
 export default Game_management

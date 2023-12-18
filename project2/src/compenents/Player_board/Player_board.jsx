@@ -44,8 +44,8 @@ const Player_board = (props) => {
     }
 
     const other_players_style = {
-        backgroundColor: "blue",
-    }
+        backgroundColor: "gray",
+     }
 
     let is_current_user = props.current_player[0] == props.player.id;
     if (playerState.is_active) {
