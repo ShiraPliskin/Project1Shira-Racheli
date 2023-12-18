@@ -60,16 +60,12 @@ function Home_page() {
     tops = tops.slice(0, tops.length > 3 ? 3 : tops.length);
     setBestPlayers(tops);
   }
-  const grid_style={
-    display:"grid",
-    gridautocolumns:"10%",
-    gridautorows: `${100/current_players[0].length}%`
-  }
+  
   switch (board_choice[0]) {
     case 1:
       return (<Game_registration add_curr_player={add_curr_player} start_game={start_game} MAX_NUM={MAX_NUM} />)
     case 2:
-      return (<><div style={grid_style}>
+      return (<><div>
         <Game_management MAX_NUM={MAX_NUM} current_players={current_players} current_player={current_player} find_best_players={find_best_players} generate_random={generate_random} generate_avg={generate_avg} />
         <Best_players best_players={best_players} />
       </div></>)
