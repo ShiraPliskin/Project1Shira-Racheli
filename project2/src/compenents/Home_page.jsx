@@ -4,7 +4,7 @@ import Best_players from './Best_players';
 import Game_management from './Game_management';
 
 function Home_page() {
-  const MAX_NUM = 10;
+  const MAX_NUM = 100;
   const current_players = useState([]);
   const current_player = useState(0);
   const board_choice = useState(1);
